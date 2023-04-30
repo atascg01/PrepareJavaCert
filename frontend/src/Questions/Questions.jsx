@@ -23,7 +23,7 @@ function Questions() {
     }, []);
 
     function checkAnswer() {
-        if (selectedAnswer !== questions[counter].solution.toString()) {
+        if (selectedAnswer !== questions[counter].solution) {
             alert("Incorrect answer!");
             return;
         }
@@ -34,9 +34,11 @@ function Questions() {
 
     }
 
-    const onOptionChange = e => {
-        setSelectedAnswer(e.target.value)
+    function handleClick(value) {
+        setSelectedAnswer(value.index)
     }
+
+    // TODO Make div colored if selected
 
     return (
         <div>
@@ -44,14 +46,14 @@ function Questions() {
             {!isLoading && questions.length === 0 && <div>No questions found</div>}
             {!isLoading && questions.length > 0 && counter >= questions.length && <div>Quiz completed!</div>}
             {!isLoading && counter < questions.length &&
-                <div>
+                <div className='quizDiv'>
                     <h1>{questions[counter].title}</h1>
                     <p id="question"></p>
                     <form id="quiz">
                         {questions[counter].options.map((option, index) => {
                             return (
-                                <div key={index}>
-                                    <input type="radio" name="answer" checked={selectedAnswer === `${index}`} value={index} onChange={onOptionChange} />
+                                <div onClick={() => handleClick({index})} key={index}>
+                                    <input type="radio" name="answer" checked={selectedAnswer === `${index}`} value={index} />
                                     <label>{option}</label>
                                 </div>
                             );

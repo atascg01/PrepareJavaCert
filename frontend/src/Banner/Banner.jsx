@@ -5,14 +5,14 @@ import './Banner.css'
 function Banner() {
     return (
         <header>
-            <div class="banner-container">
-                <div class="logo">
+            <div className="banner-container">
+                <div className="logo">
                     <h1>
                         Prepare for Java Cert 
                         <FontAwesomeIcon className="icon" icon="fa-brands fa-java" />
                     </h1>
                 </div>
-                <div class="contact">
+                <div className="contact">
                     <a href="#">Contact Us</a>
                 </div>
             </div>
