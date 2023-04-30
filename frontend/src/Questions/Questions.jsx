@@ -31,7 +31,7 @@ function Questions() {
         alert("Correct! Next question")
         setCounter(counter + 1)
         setSelectedAnswer(-1)
-        
+
     }
 
     const onOptionChange = e => {
@@ -40,7 +40,7 @@ function Questions() {
 
     return (
         <div>
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <div className="loading"><div className="spinner"></div></div>}
             {!isLoading && questions.length === 0 && <div>No questions found</div>}
             {!isLoading && questions.length > 0 && counter >= questions.length && <div>Quiz completed!</div>}
             {!isLoading && counter < questions.length &&
