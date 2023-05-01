@@ -35,10 +35,18 @@ function Questions() {
     }
 
     function handleClick(value) {
-        setSelectedAnswer(value.index)
+        setSelectedAnswer(value.index);
+        const labels = document.getElementsByClassName("labels");
+        for(let i = 0; i < labels.length; i++) {
+            const label = labels[i];
+            if (label.id != value.index) {
+                label.classList.remove('selectedLabel');
+            } else {
+                console.log(label)
+                label.classList.add('selectedLabel');
+            }
+        }
     }
-
-    // TODO Make div colored if selected
 
     return (
         <div>
@@ -48,13 +56,12 @@ function Questions() {
             {!isLoading && counter < questions.length &&
                 <div className='quizDiv'>
                     <h1>{questions[counter].title}</h1>
-                    <p id="question"></p>
                     <form id="quiz">
                         {questions[counter].options.map((option, index) => {
                             return (
                                 <div onClick={() => handleClick({index})} key={index}>
-                                    <input type="radio" name="answer" checked={selectedAnswer === `${index}`} value={index} />
-                                    <label>{option}</label>
+                                    <input type="radio" name="answer" value={index} />
+                                    <label className="labels" id={index}>{option}</label>
                                 </div>
                             );
                         })}

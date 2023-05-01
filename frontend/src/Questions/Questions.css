@@ -36,6 +36,11 @@
     color: #fff;
 }
 
+.selectedLabel {
+    background-color: #333;
+    color: #fff !important;
+}
+
 #quiz input[type="radio"]:checked+label {
     background-color: #333;
     color: #fff;
@@ -57,9 +62,6 @@
     color: #333;
     border: 2px solid #333;
 }
-
-
-
 
 .loading {
     display: flex;
