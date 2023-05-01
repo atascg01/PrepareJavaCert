@@ -31,15 +31,18 @@ function Questions() {
         alert("Correct! Next question")
         setCounter(counter + 1)
         setSelectedAnswer(-1)
-
     }
 
     function handleClick(value) {
         setSelectedAnswer(value.index);
+        toggleClass(value.index);
+    }
+
+    function toggleClass(index) {
         const labels = document.getElementsByClassName("labels");
         for(let i = 0; i < labels.length; i++) {
             const label = labels[i];
-            if (label.id != value.index) {
+            if (label.id != index) {
                 label.classList.remove('selectedLabel');
             } else {
                 console.log(label)
@@ -52,7 +55,7 @@ function Questions() {
         <div>
             {isLoading && <div className="loading"><div className="spinner"></div></div>}
             {!isLoading && questions.length === 0 && <div>No questions found</div>}
-            {!isLoading && questions.length > 0 && counter >= questions.length && <div>Quiz completed!</div>}
+            {!isLoading && questions.length > 0 && counter >= questions.length && <div className="quizCompleted">Quiz completed! ✔</div>}
             {!isLoading && counter < questions.length &&
                 <div className='quizDiv'>
                     <h1>{questions[counter].title}</h1>

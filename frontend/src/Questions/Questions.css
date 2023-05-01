@@ -32,7 +32,7 @@
 }
 
 #quiz label:hover {
-    background-color: #333;
+    background-color: #737373;
     color: #fff;
 }
 
@@ -61,6 +61,15 @@
     background-color: #fff;
     color: #333;
     border: 2px solid #333;
+}
+
+.quizCompleted {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    font-size: 2rem;
 }
 
 .loading {
